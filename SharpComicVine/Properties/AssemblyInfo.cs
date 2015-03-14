@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set di attributi. Per modificare le informazioni associate a un assembly
 // occorre quindi modificare i valori di questi attributi.
 [assembly: AssemblyTitle("SharpComicVine")]
-[assembly: AssemblyDescription("Simple library for working with the ComicVine API in C#")]
+[assembly: AssemblyDescription("Simple library for working with the ComicVine API in C#. (Portable Class Library PCL)")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Matt Whetton")]
 [assembly: AssemblyProduct("SharpComicVine")]
