@@ -1,35 +1,30 @@
-﻿using SharpComicVine.Models;
-using System;
-using System.Collections.Generic;
+﻿#region Using Statements
+
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
+using SharpComicVine.Models;
+
+#endregion
 
 namespace SharpComicVine
 {
-    static class ComicVineConnection
-    {
-        public async static Task<ComicVineResponse> ConnectAndRequest(string query)
-        {
-            ServicePointManager.Expect100Continue = false;
-           
-            ComicVineResponse comicVineResponse = new ComicVineResponse();
+	internal static class ComicVineConnection
+	{
+		public static async Task<ComicVineResponse> ConnectAndRequest(string query)
+		{
+			var comicVineResponse = new ComicVineResponse();
 
-            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(query);
-            httpWebRequest.Proxy = null;
+			var httpWebRequest = (HttpWebRequest) WebRequest.Create(query);
 
-            using (WebResponse webResponse = await httpWebRequest.GetResponseAsync())
-            using (StreamReader streamReader = new StreamReader(webResponse.GetResponseStream()))
-            {
-                comicVineResponse.Status = "OK";
-                comicVineResponse.Response = streamReader.ReadToEnd();
-                
-                webResponse.Close();
-            }
+			using (var webResponse = await httpWebRequest.GetResponseAsync())
+			using (var streamReader = new StreamReader(webResponse.GetResponseStream()))
+			{
+				comicVineResponse.Status = "OK";
+				comicVineResponse.Response = streamReader.ReadToEnd();
+			}
 
-            return comicVineResponse;
-        }
-    }
+			return comicVineResponse;
+		}
+	}
 }

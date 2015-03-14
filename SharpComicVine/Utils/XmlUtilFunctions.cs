@@ -1,30 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿#region Using Statements
+
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
-using System.Xml.XPath;
+
+#endregion
 
 namespace SharpComicVine.Utils
 {
-    public static class XmlUtilFunctions
-    {
-        public static string getNodeValue(XDocument xDocument, string name)
-        {
-            string result = string.Empty;
-            
-            var lv1s = from lv1 in xDocument.Descendants(name) select lv1;
+	public static class XmlUtilFunctions
+	{
+		public static string GetNodeValue(XDocument xDocument, string name)
+		{
+			var result = string.Empty;
 
-            if (lv1s != null & lv1s.Count() > 0)
-            {
-                result = lv1s.First().Value;
-            }
+			var elements = xDocument.Descendants(name).ToList();
 
-            lv1s = null;
+			if (elements.Any())
+			{
+				result = elements.First().Value;
+			}
 
-            return result;
-        }
-    }
+			return result;
+		}
+	}
 }

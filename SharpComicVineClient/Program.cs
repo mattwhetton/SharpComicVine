@@ -27,7 +27,7 @@ namespace SharpComicVineClient
             List<ComicVineIssue> comicVineIssueList = new List<ComicVineIssue>();
 
             ComicVineService comicVineService = new ComicVineService();
-            comicVineService.ComicVineKey = "YOURKEY";
+			comicVineService.ComicVineKey = "3d08d1d807f00c8d398d600e675720a1a065c3cb";
 
             // Xml Working
 

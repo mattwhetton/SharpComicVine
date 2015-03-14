@@ -17,9 +17,9 @@ namespace SharpComicVine.Xml
 
             XDocument xDocument = XDocument.Parse(xmlString, LoadOptions.None);
 
-            comicVineResponseData.number_of_page_results = StringUtilFunctions.TryToParse(XmlUtilFunctions.getNodeValue(xDocument, "number_of_page_results"));
-            comicVineResponseData.number_of_total_results = StringUtilFunctions.TryToParse(XmlUtilFunctions.getNodeValue(xDocument, "number_of_total_results"));
-            comicVineResponseData.limit = StringUtilFunctions.TryToParse(XmlUtilFunctions.getNodeValue(xDocument, "limit"));
+            comicVineResponseData.number_of_page_results = StringUtilFunctions.TryToParse(XmlUtilFunctions.GetNodeValue(xDocument, "number_of_page_results"));
+            comicVineResponseData.number_of_total_results = StringUtilFunctions.TryToParse(XmlUtilFunctions.GetNodeValue(xDocument, "number_of_total_results"));
+            comicVineResponseData.limit = StringUtilFunctions.TryToParse(XmlUtilFunctions.GetNodeValue(xDocument, "limit"));
 
             return comicVineResponseData;
         }
@@ -53,10 +53,10 @@ namespace SharpComicVine.Xml
 
             XDocument xDocument = XDocument.Parse(xmlString);
 
-            comicVineVolume.url = XmlUtilFunctions.getNodeValue(xDocument, "api_detail_url");
-            comicVineVolume.count_of_issues = StringUtilFunctions.TryToParse(XmlUtilFunctions.getNodeValue(xDocument, "count_of_issues"));
-            comicVineVolume.volume_description = XmlUtilFunctions.getNodeValue(xDocument, "description");
-            comicVineVolume.id = StringUtilFunctions.TryToParse(XmlUtilFunctions.getNodeValue(xDocument, "id"));
+            comicVineVolume.url = XmlUtilFunctions.GetNodeValue(xDocument, "api_detail_url");
+            comicVineVolume.count_of_issues = StringUtilFunctions.TryToParse(XmlUtilFunctions.GetNodeValue(xDocument, "count_of_issues"));
+            comicVineVolume.volume_description = XmlUtilFunctions.GetNodeValue(xDocument, "description");
+            comicVineVolume.id = StringUtilFunctions.TryToParse(XmlUtilFunctions.GetNodeValue(xDocument, "id"));
 
             
             ComicVineImages comicVineImages = new ComicVineImages();
@@ -99,7 +99,7 @@ namespace SharpComicVine.Xml
             }
 
             comicVineVolume.list_of_issue = comicVineIssueList;
-            comicVineVolume.name = XmlUtilFunctions.getNodeValue(xDocument, "name");
+            comicVineVolume.name = XmlUtilFunctions.GetNodeValue(xDocument, "name");
 
             ComicVinePublisher comicVinePublisher = new ComicVinePublisher();
 
@@ -120,7 +120,7 @@ namespace SharpComicVine.Xml
             }
 
             comicVineVolume.publisher = comicVinePublisher;
-            comicVineVolume.start_year = StringUtilFunctions.TryToParse(XmlUtilFunctions.getNodeValue(xDocument, "start_year"));
+            comicVineVolume.start_year = StringUtilFunctions.TryToParse(XmlUtilFunctions.GetNodeValue(xDocument, "start_year"));
 
             return comicVineVolume;
         }

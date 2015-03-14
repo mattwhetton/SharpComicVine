@@ -17,9 +17,9 @@ namespace SharpComicVine.Xml
 
             XDocument xDocument = XDocument.Parse(xmlString, LoadOptions.None);
 
-            comicVineIssue.api_detail_url = XmlUtilFunctions.getNodeValue(xDocument, "api_detail_url");
-            comicVineIssue.issue_description = XmlUtilFunctions.getNodeValue(xDocument, "description");
-            comicVineIssue.id = StringUtilFunctions.TryToParse(XmlUtilFunctions.getNodeValue(xDocument, "id"));
+            comicVineIssue.api_detail_url = XmlUtilFunctions.GetNodeValue(xDocument, "api_detail_url");
+            comicVineIssue.issue_description = XmlUtilFunctions.GetNodeValue(xDocument, "description");
+            comicVineIssue.id = StringUtilFunctions.TryToParse(XmlUtilFunctions.GetNodeValue(xDocument, "id"));
 
             // Get the volume images 
             var images = from imgs in xDocument.Descendants("image") select imgs;
@@ -37,10 +37,10 @@ namespace SharpComicVine.Xml
             }
 
             comicVineIssue.images = comicVineImages;
-            comicVineIssue.issue_number = XmlUtilFunctions.getNodeValue(xDocument, "issue_number");
-            comicVineIssue.name = XmlUtilFunctions.getNodeValue(xDocument, "name");
+            comicVineIssue.issue_number = XmlUtilFunctions.GetNodeValue(xDocument, "issue_number");
+            comicVineIssue.name = XmlUtilFunctions.GetNodeValue(xDocument, "name");
 
-            string comic_tentative_date = XmlUtilFunctions.getNodeValue(xDocument, "cover_date");
+            string comic_tentative_date = XmlUtilFunctions.GetNodeValue(xDocument, "cover_date");
 
             comicVineIssue.issue_year = StringUtilFunctions.TryToExtractYear(comic_tentative_date);
             comicVineIssue.issue_month = StringUtilFunctions.TryToExtractMonth(comic_tentative_date);
