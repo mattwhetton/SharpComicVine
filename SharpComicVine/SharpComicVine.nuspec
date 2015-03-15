@@ -11,5 +11,9 @@
     <releaseNotes>Initial release.</releaseNotes>
     <copyright>Copyright 2015</copyright>
     <tags>ComicVine SharpComicVine PCL Xamarin</tags>
+		<dependencies>
+			<dependency id="Microsoft.Bcl.Build"
+									version="1.0.21" />
+		</dependencies>
   </metadata>
 </package>
