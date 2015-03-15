@@ -14,9 +14,12 @@ namespace SharpComicVine
 {
 	public class ComicVineService
 	{
-		public ComicVineService()
+		private const string COMIC_VINE_BASE_ADDRESS = "http://www.comicvine.com/api/";
+		private const string COMIC_VINE_SEARCH_ADDRESS = "search/";
+
+		public ComicVineService(string baseAddress = null)
 		{
-			Initialize();
+			Initialize(baseAddress);
 		}
 
 		public string ComicVineKey { get; set; }
@@ -30,12 +33,14 @@ namespace SharpComicVine
 		public string ComicVineAddress { get; private set; }
 
 
-		private void Initialize()
+		private void Initialize(string baseAddress = null)
 		{
 			SearchType = SearchType.Xml;
 			MatchType = MatchType.AbsoluteMatch;
-			SearchAddress = "http://api.comicvine.com/search/";
-			ComicVineAddress = "http://api.comicvine.com/";
+
+			ComicVineAddress = String.IsNullOrWhiteSpace(baseAddress) ? COMIC_VINE_BASE_ADDRESS : baseAddress;
+
+			SearchAddress = String.Format("{0}{1}", ComicVineAddress, COMIC_VINE_SEARCH_ADDRESS);
 		}
 
 		private List<ComicVineVolume> FindVolumeIdByName(string volumeName)
