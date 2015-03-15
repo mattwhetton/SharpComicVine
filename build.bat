@@ -20,4 +20,5 @@ mkdir Build
 mkdir Build\lib
 mkdir Build\lib\net40
  
-%nuget% pack "SharpComicVine\SharpComicVine.nuspec" -NoPackageAnalysis -verbosity detailed -o Build -Version %version% -p Configuration="%config%"
+%nuget% pack "SharpComicVine\SharpComicVine.csproj"
+REM %nuget% pack "SharpComicVine\SharpComicVine.nuspec" -NoPackageAnalysis -verbosity detailed -o Build -Version %version% -p Configuration="%config%"
